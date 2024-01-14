@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dacwfgcs4c2jo"]
+
+[ext_resource type="Script" path="res://scenes/Cell.gd" id="1_1atyu"]
+[ext_resource type="Texture2D" uid="uid://d3jtb6bjkn1hu" path="res://assets/deadcell.png" id="1_n0il2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jw6ky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m8qf"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+input_pickable = true
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_jw6ky")
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_1atyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0il2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_2m8qf")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
